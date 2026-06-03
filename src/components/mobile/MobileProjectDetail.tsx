@@ -404,6 +404,14 @@ export const MobileProjectDetail = ({ project, onBack }: Props) => {
               label={`${project.documentLabel || 'PDF'} 보기`}
             />
           )}
+          {/* 두 번째 PDF */}
+          {project.secondaryPdfUrl && (
+            <ListButton
+              onClick={() => setPopupContent({ type: 'iframe', url: project.secondaryPdfUrl!, title: project.secondaryDocumentLabel || 'PDF 보기' })}
+              icon={<BookOpen strokeWidth={1.8} style={{ width: 16, height: 16, color: '#0047BB' }} />}
+              label={`${project.secondaryDocumentLabel || 'PDF'} 보기`}
+            />
+          )}
           {/* 프로토타입 */}
           {project.prototypeUrl && (
             <ListButton

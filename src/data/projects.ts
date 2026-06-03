@@ -12,6 +12,8 @@ export const PROJECTS: Project[] = [
     image: "./images/lies_of_p.png",
     pdfUrl: "./documents/01_P의거짓차기작_추론및제안서_조경환.pdf",
     documentLabel: "분석 제안서",
+    secondaryPdfUrl: "./documents/02_P의거짓차기작_AI리뷰데이터분석_조경환.pdf",
+    secondaryDocumentLabel: "AI 리뷰 데이터 분석",
     color: "from-red-900/30 to-zinc-800/30",
     status: "제안서",
     stats: {

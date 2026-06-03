@@ -13,6 +13,8 @@ export interface Project {
   overviewVideoUrl?: string;
   pdfUrl?: string;
   documentLabel?: string;
+  secondaryPdfUrl?: string;
+  secondaryDocumentLabel?: string;
   scenarioGallery?: string[];
   externalUrl?: string;
   hideExternalTab?: boolean;

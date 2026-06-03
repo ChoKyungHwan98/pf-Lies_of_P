@@ -13,7 +13,7 @@ interface ProjectDetailProps {
   onSaveContent?: (content: string) => void;
 }
 
-type TabType = 'overview' | 'document' | 'scenario' | 'video' | 'link' | 'simulator' | 'prototype' | 'gantt';
+type TabType = 'overview' | 'document' | 'secondaryDocument' | 'scenario' | 'video' | 'link' | 'simulator' | 'prototype' | 'gantt';
 
 export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: ProjectDetailProps) => {
   const [activeTab, setActiveTab] = useState<TabType>(project.id === 0 ? 'document' : 'overview');
@@ -23,6 +23,7 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
   const tabs: { id: TabType; label: string; icon: React.ReactNode; show: boolean; color: string }[] = [
     { id: 'overview', label: '개요', icon: <LayoutGrid className="w-3.5 h-3.5" />, show: project.id !== 0, color: '#0047BB' },
     { id: 'document', label: project.documentLabel || '기획서', icon: <FileText className="w-3.5 h-3.5" />, show: !!(project.gallery || project.pdfUrl), color: '#059669' },
+    { id: 'secondaryDocument', label: project.secondaryDocumentLabel || '기타 기획서', icon: <FileText className="w-3.5 h-3.5" />, show: !!project.secondaryPdfUrl, color: '#059669' },
     { id: 'scenario', label: '시나리오 기획서', icon: <FileText className="w-3.5 h-3.5" />, show: !!project.scenarioGallery, color: '#D97706' },
     { id: 'prototype', label: '프로토타입', icon: <Sparkles className="w-3.5 h-3.5" />, show: !!project.prototypeUrl, color: '#7C3AED' },
     { id: 'video', label: '플레이 영상', icon: <Play className="w-3.5 h-3.5" />, show: !!project.videoUrl, color: '#EA580C' },
@@ -144,12 +145,18 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
       {/* Main Content Area - Maximized Space */}
       <div className="flex-1 flex flex-col min-h-0 bg-white relative">
         <AnimatePresence mode="wait">
-          {activeTab === 'document' || activeTab === 'scenario' ? (
+          {activeTab === 'document' || activeTab === 'secondaryDocument' || activeTab === 'scenario' ? (
             <motion.div key={`tab-${activeTab}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               className="flex-1 flex flex-col min-h-0 overflow-hidden bg-zinc-950 relative"
             >
               {(activeTab === 'scenario' ? project.scenarioGallery : project.gallery) ? (
                 <EBookGallery images={galleryImages} currentIndex={currentPage} onPageChange={setCurrentPage} maxScale={project.id === 1 ? 100 : 88} />
+              ) : activeTab === 'secondaryDocument' && project.secondaryPdfUrl ? (
+                <iframe 
+                  src={`${project.secondaryPdfUrl}#toolbar=0`} 
+                  className="w-full h-full border-0"
+                  title="PDF Viewer"
+                />
               ) : project.pdfUrl ? (
                 <iframe 
                   src={`${project.pdfUrl}#toolbar=0`} 
