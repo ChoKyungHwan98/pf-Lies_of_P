@@ -2,6 +2,45 @@ import type { Project } from '../types';
 
 export const PROJECTS: Project[] = [
   {
+    id: 0,
+    title: "P의거짓 차기작 추론및제안서",
+    roles: ["제안서"],
+    description: "P의 거짓 Steam 한국어 리뷰 데이터를 AI로 분석하여 전투 시스템의 강점·약점을 도출하고, 차기작을 위한 구체적인 개선안을 제안한 분석 제안서입니다.",
+    keyTasks: ["데이터 분석", "제안서 작성", "AI 활용"],
+    tags: ["소울라이크", "전투기획", "AI분석", "Steam리뷰", "차기작제안"],
+    image: "./images/lies_of_p.png",
+    gallery: Array.from({ length: 22 }, (_, i) => `./images/lies_ebook/page_${(i + 1).toString().padStart(3, '0')}.png`),
+    pdfUrl: "./documents/P의거짓차기작_분석및제안서_조경환.pdf",
+    documentLabel: "분석 제안서",
+    color: "from-red-900/30 to-zinc-800/30",
+    status: "제안서",
+    stats: {
+      released: "제안서",
+      teamSize: "1인",
+      myRole: "기획 분석 · 제안서 작성",
+      achievement: "Steam 리뷰 AI 분석 기반 차기작 제안",
+    },
+    content: `# P의 거짓 차기작 추론 및 제안서
+
+## 1. 기획 개요
+P의 거짓 Steam 한국어 리뷰 데이터를 AI(Gemini 2.0 Flash)로 다차원 분석하여, 유저가 실제로 경험한 전투 시스템의 강점과 약점을 정량적으로 도출했습니다.
+
+### 분석 파이프라인
+- Steam Storefront API → FastAPI + SQLite → Gemini 2.0 Flash LLM 분석
+- ABSA(Aspect-Based Sentiment Analysis) 6개 영역 분류
+- 감정 분류(POSITIVE / NEGATIVE / DISAPPOINTMENT / ANGER 등) 다차원 분석
+
+### 핵심 발견
+- 전투 타격감과 보스 패턴 설계에 대한 긍정 반응이 압도적으로 높음
+- 무기 다양성 부족 및 빌드 확장성에 대한 개선 요구 상당수 확인
+- 플레이타임 대비 콘텐츠 밀도에 대한 기대치 미충족 의견 존재
+
+### 차기작 제안
+- 트레이드오프가 분명한 무기 정체성 강화
+- 패턴 기반 학습 설계 — 설명 없이 유저가 스스로 체득하는 전투 구조
+- 회차 플레이 가치를 유지하는 밸런스 설계`
+  },
+  {
     id: 1,
     title: "도로시아",
     roles: ["밸런스 기획"],
