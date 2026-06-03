@@ -84,19 +84,25 @@ export const ProjectCard = ({ project, idx, isEditing, projects, setProjects, on
 
       <div className="flex-1 flex flex-col p-6 lg:p-8">
 
+        {/* Featured star badge */}
+        {(project as any).featured && (
+          <div className="inline-flex items-center gap-1.5 self-start px-3.5 py-1.5 rounded-full text-[11px] font-black tracking-wide mb-4 bg-amber-50 text-amber-600 border border-amber-200">
+            <span className="text-[13px] leading-none">⭐</span>
+            저격 포트폴리오
+          </div>
+        )}
+
         {/* Status — most prominent element */}
-        {project.status && (
+        {project.status && !(project as any).featured && (
           <div className={`inline-flex items-center gap-2 self-start px-4 py-2 rounded-full text-[12px] font-black tracking-wide mb-4 ${
             project.status === '미출시'
               ? 'bg-zinc-100 text-zinc-500 border border-zinc-200'
               : project.status === '프로토타입'
               ? 'bg-violet-50 text-violet-600 border border-violet-200'
+              : project.status === '제안서'
+              ? 'bg-zinc-800 text-white border border-zinc-600'
               : 'bg-[#0047BB] text-white shadow-md shadow-[#0047BB]/25'
           }`}>
-            {project.status !== '미출시' && project.status !== '프로토타입' && (
-              <span className="text-[13px] leading-none">🏆</span>
-            )}
-            {project.status === '프로토타입' && <span className="text-[13px] leading-none">⚡</span>}
             <EditableText value={project.status} onSave={(v) => { const p = [...projects]; p[idx].status = v; setProjects(p); }} isEditing={isEditing} />
           </div>
         )}
