@@ -10,7 +10,7 @@ export const PROJECTS: Project[] = [
     keyTasks: ["AI 활용", "추론", "제안"],
     tags: ["소울라이크", "전투기획", "AI분석", "Steam리뷰", "차기작제안"],
     image: "./images/lies_of_p.png",
-    pdfUrl: "./documents/P의거짓차기작_추론및제안서_조경환.pdf",
+    pdfUrl: "./documents/01_P의거짓차기작_추론및제안서_조경환.pdf",
     documentLabel: "분석 제안서",
     color: "from-red-900/30 to-zinc-800/30",
     status: "제안서",
