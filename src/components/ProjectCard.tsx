@@ -79,21 +79,18 @@ export const ProjectCard = ({ project, idx, isEditing, projects, setProjects, on
       <div className="overflow-hidden relative bg-zinc-900 shrink-0 aspect-[16/9]">
         <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 absolute inset-0 grayscale-[30%] opacity-85 group-hover:grayscale-0 group-hover:opacity-100" referrerPolicy="no-referrer" />
         <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-20" />
-
+        {(project as any).featured && (
+          <div className="absolute top-3 left-3 z-30 text-[32px] leading-none drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] select-none">
+            ⭐
+          </div>
+        )}
       </div>
 
       <div className="flex-1 flex flex-col p-6 lg:p-8">
 
-        {/* Featured star badge */}
-        {(project as any).featured && (
-          <div className="inline-flex items-center gap-1.5 self-start px-3.5 py-1.5 rounded-full text-[11px] font-black tracking-wide mb-4 bg-amber-50 text-amber-600 border border-amber-200">
-            <span className="text-[13px] leading-none">⭐</span>
-            저격 포트폴리오
-          </div>
-        )}
 
-        {/* Status — most prominent element */}
-        {project.status && !(project as any).featured && (
+        {/* Status badge */}
+        {project.status && (
           <div className={`inline-flex items-center gap-2 self-start px-4 py-2 rounded-full text-[12px] font-black tracking-wide mb-4 ${
             project.status === '미출시'
               ? 'bg-zinc-100 text-zinc-500 border border-zinc-200'
@@ -113,9 +110,11 @@ export const ProjectCard = ({ project, idx, isEditing, projects, setProjects, on
         </h3>
 
         {/* Description */}
+        {project.description && (
         <div className="text-zinc-600 text-[14px] leading-[1.7] mb-5 font-medium">
           <EditableText value={project.description} onSave={(v) => { const p = [...projects]; p[idx].description = v; setProjects(p); }} isEditing={isEditing} multiline markdown={true} />
         </div>
+        )}
 
         {/* Key Tasks */}
         {project.keyTasks && project.keyTasks.length > 0 && (

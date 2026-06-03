@@ -3,11 +3,11 @@ import type { Project } from '../types';
 export const PROJECTS: Project[] = [
   {
     id: 0,
-    title: "P의거짓 차기작 추론및제안서",
+    title: "P의거짓 차기작 추론 및 제안서",
     featured: true,
     roles: ["제안서"],
-    description: "P의 거짓 Steam 한국어 리뷰 데이터를 AI로 분석하여 전투 시스템의 강점·약점을 도출하고, 차기작을 위한 구체적인 개선안을 제안한 분석 제안서입니다.",
-    keyTasks: ["데이터 분석", "제안서 작성", "AI 활용"],
+    description: "",
+    keyTasks: ["AI 활용", "추론", "제안"],
     tags: ["소울라이크", "전투기획", "AI분석", "Steam리뷰", "차기작제안"],
     image: "./images/lies_of_p.png",
     gallery: Array.from({ length: 22 }, (_, i) => `./images/lies_ebook/page_${(i + 1).toString().padStart(3, '0')}.png`),
